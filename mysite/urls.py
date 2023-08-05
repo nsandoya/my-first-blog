@@ -15,8 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
+    # Para c/URL que empieza con "admin", django encontrará su correspondiente...
+    # view, en la ruta acont especificada:
     path('admin/', admin.site.urls),
+    # Django redirigirá todo lo que entre a 'http://127.0.0.1:8000/' 
+    # hacia blog.urls y buscará más instrucciones allí.
+    path('', include('blog.urls')),
 ]
